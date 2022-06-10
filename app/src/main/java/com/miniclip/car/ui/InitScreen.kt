@@ -1,0 +1,59 @@
+package com.miniclip.car.ui
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.Surface
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.miniclip.car.MainViewModel
+
+@Composable
+fun InitScreen() {
+    val viewModel: MainViewModel = hiltViewModel()
+    var isLoading by remember { mutableStateOf(true) }
+
+    Surface(Modifier.fillMaxSize(), color = Color.Black) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            if (isLoading) {
+                CircularProgressIndicator(Modifier.size(120.dp), color = Color.White)
+            } else {
+                /*
+                AlertDialog(
+                    modifier = Modifier.padding(4.dp),
+                    shape = RoundedCornerShape(16.dp),
+                    title = {
+                        Text(
+                            "No internet connection",
+                            style = MaterialTheme.typography.h4
+                        )
+                    },
+                    text = {
+                        Text(
+                            "Check your internet connection and try again later",
+                            style = MaterialTheme.typography.body2
+                        )
+                    },
+                    onDismissRequest = { viewModel.sendIifwesbxwxuzmyspEvent() },
+                    confirmButton = {
+                        TextButton(onClick = { viewModel.sendIifwesbxwxuzmyspEvent() }) {
+                            Text("Try again", style = MaterialTheme.typography.button)
+                        }
+                    })*/
+            }
+        }
+    }
+
+    LaunchedEffect(viewModel.isLoading) {
+        isLoading = viewModel.isLoading
+    }
+}
