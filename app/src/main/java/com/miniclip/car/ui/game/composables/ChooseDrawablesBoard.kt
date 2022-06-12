@@ -12,7 +12,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.miniclip.car.ui.game.GameViewModel
-import com.miniclip.car.utils.enums.PlayerTurn
 import com.miniclip.car.utils.listOfDecals
 
 @Composable

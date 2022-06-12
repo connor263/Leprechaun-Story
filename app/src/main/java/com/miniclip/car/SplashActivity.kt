@@ -3,41 +3,41 @@ package com.miniclip.car
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.animation.doOnEnd
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        val ivBg = findViewById<ImageView>(R.id.iv_bg)
-        val tvName = findViewById<TextView>(R.id.tv_name)
+        val comminiclipcarg = findViewById<ImageView>(R.id.iv_bg)
+        val tvcomminiclipcar = findViewById<TextView>(R.id.tv_name)
 
-        val bgAnimator = ObjectAnimator.ofFloat(ivBg, View.ALPHA, 1F, 0.3F).apply {
+        val bcomminiclipcarimator = ObjectAnimator.ofFloat(comminiclipcarg, View.ALPHA, 1F, 0.3F).apply {
             duration = 1500
         }
 
-        val tvAnimator = ObjectAnimator.ofFloat(tvName, View.ALPHA, 0F, 1F).apply {
+        val tvAcomminiclipcartor = ObjectAnimator.ofFloat(tvcomminiclipcar, View.ALPHA, 0F, 1F).apply {
             duration = 1500
         }
 
         AnimatorSet().apply {
-            play(bgAnimator)
+            play(bcomminiclipcarimator)
                 .with(
-                    tvAnimator
+                    tvAcomminiclipcartor
                 )
             doOnEnd {
-                navigateToMainActivity()
+                navigatcomminiclipcarctivity()
             }
             start()
         }
     }
 
-    private fun navigateToMainActivity() {
+    private fun navigatcomminiclipcarctivity() {
         Intent(this, MainActivity::class.java).run {
             startActivity(this)
             finish()

@@ -8,20 +8,19 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.miniclip.car.MainViewModel
+import com.miniclip.car.Maicomminiclipcarodel
 import com.miniclip.car.ui.game.GameScreen
 import com.miniclip.car.ui.game.MenuScreen
 import com.miniclip.car.ui.game.score.ScoreScreen
 import com.miniclip.car.ui.web.WebScreen
-import kotlin.math.sin
 
 @Composable
 fun LeprechaunStoryContent(
     navController: NavHostController,
-    mainViewModel: MainViewModel = hiltViewModel()
+    maicomminiclipcarodel: Maicomminiclipcarodel = hiltViewModel()
 ) {
-    LaunchedEffect(mainViewModel.route) {
-        mainViewModel.route.let {
+    LaunchedEffect(maicomminiclipcarodel.rcomminiclipcare) {
+        maicomminiclipcarodel.rcomminiclipcare.let {
             if (it.isNotBlank()) {
                 navController.navigate(it) {
                     popUpTo(LeprechaunStoryNavKeys.Init.route) {
@@ -32,7 +31,7 @@ fun LeprechaunStoryContent(
         }
     }
 
-    NavHost(navController = navController, startDestination = LeprechaunStoryNavKeys.Menu.route) {
+    NavHost(navController = navController, startDestination = LeprechaunStoryNavKeys.Init.route) {
         composable(LeprechaunStoryNavKeys.Menu.route) {
             MenuScreen(navController)
         }
@@ -59,7 +58,7 @@ fun LeprechaunStoryContent(
         }
 
         composable(LeprechaunStoryNavKeys.Init.route) {
-            InitScreen()
+            Inicomminiclipcareen()
         }
         composable(
             LeprechaunStoryNavKeys.Web().route,

@@ -1,13 +1,15 @@
 package com.miniclip.car.ui.game
 
-import android.util.Log
-import androidx.compose.runtime.*
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
-import com.miniclip.car.data.model.TicTaeCell
-import com.miniclip.car.data.model.TicTaePlayerModel
-import com.miniclip.car.utils.enums.CellPosition
-import com.miniclip.car.utils.enums.CrossedBy
-import com.miniclip.car.utils.enums.PlayerTurn
+import com.miniclip.car.data.model.game.TicTaeCell
+import com.miniclip.car.data.model.game.TicTaePlayerModel
+import com.miniclip.car.utils.game.enums.CellPosition
+import com.miniclip.car.utils.game.enums.CrossedBy
+import com.miniclip.car.utils.game.enums.PlayerTurn
 import com.miniclip.car.utils.listOfDecals
 import com.miniclip.car.utils.listOfPossibleMatches
 import dagger.hilt.android.lifecycle.HiltViewModel
