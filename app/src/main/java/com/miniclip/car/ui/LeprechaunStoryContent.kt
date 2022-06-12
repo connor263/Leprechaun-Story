@@ -58,7 +58,7 @@ fun LeprechaunStoryContent(
         }
 
         composable(LeprechaunStoryNavKeys.Init.route) {
-            Inicomminiclipcareen()
+            Inicomminiclipcareen(maicomminiclipcarodel)
         }
         composable(
             LeprechaunStoryNavKeys.Web().route,

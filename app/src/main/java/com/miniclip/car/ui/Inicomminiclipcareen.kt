@@ -8,12 +8,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.miniclip.car.Maicomminiclipcarodel
 
 @Composable
-fun Inicomminiclipcareen() {
-    val viewcomminiclipcarl: Maicomminiclipcarodel = hiltViewModel()
+fun Inicomminiclipcareen(viewcomminiclipcarl:Maicomminiclipcarodel) {
     var iscomminiclipcaring by remember { mutableStateOf(true) }
 
     Surface(Modifier.fillMaxSize(), color = Color.Black) {
