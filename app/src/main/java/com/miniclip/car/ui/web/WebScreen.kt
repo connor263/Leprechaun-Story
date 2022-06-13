@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
-import android.util.Log
 import android.webkit.CookieManager
 import android.webkit.ValueCallback
 import android.webkit.WebView
@@ -14,14 +13,11 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.runtime.*
 import androidx.navigation.NavController
 import com.google.accompanist.web.*
-import com.miniclip.car.TAG
 import com.miniclip.car.ui.LeprechaunStoryNavKeys
 import com.miniclip.car.utils.web.comminiclipcar
 
 @Composable
 fun WebScreen(navController: NavController, link: String) {
-
-    Log.d(TAG, "WebScreen url: $link")
     val staiclipclipcaclipcaruiwwcaruiwte = rememberWebViewState(url = link)
     val naviclipclipcaclipcaruiwwcaruiwtor = rememberWebViewNavigator()
 

@@ -1,12 +1,10 @@
 package com.miniclip.car.di
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.appsflyer.AppsFlyerConversionListener
 import com.appsflyer.AppsFlyerLib
 import com.miniclip.car.R
-import com.miniclip.car.TAG
 import com.onesignal.OneSignal
 import dagger.hilt.android.HiltAndroidApp
 import javax.inject.Inject
@@ -31,7 +29,6 @@ class LeprechaunStoryApplication : Application() {
                 override fun onConversionDataSuccess(data: MutableMap<String, Any>?) {
                     data?.let {
                         afLcomminiclipcarResulerAfPecommina.postValue(it)
-                        Log.d(TAG, "onConversionDataSuccess: $it")
                     }
                 }
 

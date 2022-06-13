@@ -13,7 +13,6 @@ class Maicomminiclipcarodel @Inject constructor() : ViewModel() {
     val uecomminiclipcarResulte = MutableStateFlow<MaincomminiclipcarEvent?>(null)
 
     var rcomminiclipcare by mutableStateOf("")
-    var isLcomminiclipcaring by mutableStateOf(true)
 
     fun onEcomminiclipcar(event: MaincomminiclipcarEvent.IncomminiclipcarEvent? = null) {
         uecomminiclipcarResulte.value = event

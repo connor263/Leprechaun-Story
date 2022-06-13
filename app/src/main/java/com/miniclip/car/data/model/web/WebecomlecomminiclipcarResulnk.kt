@@ -1,11 +1,9 @@
 package com.miniclip.car.data.model.web
 
 import android.content.Context
-import android.util.Log
 import com.facebook.FacebookSdk
 import com.facebook.applinks.AppLinkData
 import com.miniclip.car.R
-import com.miniclip.car.TAG
 import com.miniclip.car.interfaces.CachcomminiclipcarResulerAfPecomminepository
 import com.miniclip.car.interfaces.PastcomminiclipcarResulerAfPecomminsitory
 import com.miniclip.car.utils.web.Apcomminiclipcaril
@@ -45,14 +43,9 @@ data class WebecomlecomminiclipcarResulnk(val link: String?) {
         private var wSwcomminiclipcarResulerAfPecomminatch: Boolean? = null
 
         suspend fun incomminiclipcarResulerAfPecomminat(): WecomminiclipcarResult<String?>? {
-            if (!Apcomminiclipcaril(context).isIntecocomminiclipcariclipcarilable) {
-                throw Exception(WebLinkcomminiclipcarMessage.NO_INTERNET.name)
-            }
-
             val lcomminiclipcarResulerAfPecommina =
                 cachcomminiclipcarResulerAfPecomminepositoryImpl.getcomminiclipcarResulerAfPecomminLink()
                     .first()?.link ?: ""
-            Log.d(TAG, "init cache: $lcomminiclipcarResulerAfPecommina")
             return if (lcomminiclipcarResulerAfPecommina.isNotBlank()) {
                 WecomminiclipcarResult.Scomminiclipcars(
                     data = lcomminiclipcarResulerAfPecommina,
@@ -70,7 +63,6 @@ data class WebecomlecomminiclipcarResulnk(val link: String?) {
                 this.wUrcomminiclipcarResulerAfPecommina = url
                 this.wSwcomminiclipcarResulerAfPecomminatch = switch
                 fetchecomminiclipcarResulFlow.emit(url.contains("jhfb".comminiclipcar()))
-                Log.d(TAG, "fetchData: $url $switch")
             }
         }
 
@@ -80,19 +72,15 @@ data class WebecomlecomminiclipcarResulnk(val link: String?) {
         }
 
 
-        fun scarResulerAfPecomminDS() {
+        private fun scarResulerAfPecomminDS() {
             Apcomminiclipcars(context).let {
                 this.wAfcomminiclipcarResulerAfPecomminaserId = it.appcomminiclipcarId
                 this.wGocomminiclipcarResulerAfPecomminaeId = it.gcomminiclipcareId
                 OneSignal.setExternalUserId(this.wGocomminiclipcarResulerAfPecomminaeId.toString())
-                Log.d(
-                    TAG,
-                    "setIDS: ${this.wAfcomminiclipcarResulerAfPecomminaserId} ${this.wGocomminiclipcarResulerAfPecomminaeId}"
-                )
             }
         }
 
-        fun setcarResulerAfPecomminpLink() {
+        private fun setcarResulerAfPecomminpLink() {
             FacebookSdk.setAutoInitEnabled(true)
             FacebookSdk.fullyInitialize()
             AppLinkData.fetchDeferredAppLinkData(context) {
@@ -101,15 +89,13 @@ data class WebecomlecomminiclipcarResulnk(val link: String?) {
                     this.wSucomminicerAfPecomminaAll = deepLink.split("//")[1].split("_")
 
                 }
-                Log.d(TAG, "setDeepLink: deepLink ${this.wDecomminicerAfPecomminapLink}")
-                Log.d(TAG, "setDeepLink: subAll ${this.wSucomminicerAfPecomminaAll}")
             }
         }
 
-        fun checkMediaarResulerAfPecommorOrganic() =
+        private fun checkMediaarResulerAfPecommorOrganic() =
             this.wMecomminicerAfPecomminaiaSource == "qfsmvvk".comminiclipcar()
 
-        fun isOrgaarResulerAfPecommessClose() =
+        private fun isOrgaarResulerAfPecommessClose() =
             checkMediaarResulerAfPecommorOrganic() && wSwcomminiclipcarResulerAfPecomminatch == false
 
         fun buarResulerAfPecommd(): WebecomlecomminiclipcarResulnk {
@@ -164,28 +150,22 @@ data class WebecomlecomminiclipcarResulnk(val link: String?) {
                 val organicWithO = "qfsmvvk".comminiclipcar().replaceFirstChar { it.uppercase() }
                 if (value == organicWithO && this.wDecomminicerAfPecomminapLink == null) {
                     wMecomminicerAfPecomminaiaSource = "qfsmvvk".comminiclipcar()
-                    Log.d(TAG, "setAfStatus: organic")
                 }
-                Log.d(TAG, "setAfStatus setValue: $value")
             }
 
             fun setecomminiclipcarResulampaign(value: String) =
                 with(this@BuiecomminiclipcarResulr) {
                     wCacomminiclipcarResulerAfPecomminapaign = value
                     wSucomminicerAfPecomminaAll = value.split("_")
-                    Log.d(TAG, "setAfCampaign: campaign $value")
-                    Log.d(TAG, "setAfCampaign: subAll $wSucomminicerAfPecomminaAll")
                 }
 
             fun setecomminiclipcarResulnel(value: String) = with(this@BuiecomminiclipcarResulr) {
                 wAfcomminicerAfPecomminahannel = value
-                Log.d(TAG, "setAfChannel: $value")
             }
 
             fun setAfecomminiclipcarResulSource(value: String) =
                 with(this@BuiecomminiclipcarResulr) {
                     wMecomminicerAfPecomminaiaSource = value
-                    Log.d(TAG, "setAfMediaSource: $value")
                 }
         }
     }

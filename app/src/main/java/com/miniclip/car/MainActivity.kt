@@ -1,7 +1,6 @@
 package com.miniclip.car
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
@@ -32,7 +31,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.launch
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
@@ -73,7 +72,6 @@ class MainActivity : ComponentActivity() {
                 viewModel.uecomminiclipcarResulte.collect { state ->
                     when (state) {
                         Maicomminiclipcarodel.MaincomminiclipcarEvent.IncomminiclipcarEvent -> {
-                            Log.d(TAG, "initApp event")
                             iniecomminiclipcarResul()
                             viewModel.onEcomminiclipcar()
                         }
@@ -90,23 +88,18 @@ class MainActivity : ComponentActivity() {
         createcomminiclipcarResulink().let { result ->
             when (result) {
                 is WecomminiclipcarResult.Scomminiclipcars -> {
-                    Log.d(TAG, "createWebLink Success")
                     result.data?.let { link ->
                         if (link.isNotBlank()) {
                             navecomminiclipcarResuleToWeb(link)
                             if (result.linkStatus == WebLincomminiclipcarcomminiclipcars.COLLECT) {
                                 cacheecomminiclipcarResulitoryImpl.upecommesulecomminiclipcarResulache(CachcomminiclipcarResulerAfPecomminaModel(link = link))
                             }
-                            Log.d(TAG, "navigateToWeb ${result.linkStatus} /// $link")
                         }
                     }
 
                 }
                 is WecomminiclipcarResult.Ercomminiclipcarr -> {
-                    Log.d(TAG, "createWebLink Error ${result.exceptionMessage}")
                     when (result.exceptionMessage) {
-                        WebLinkcomminiclipcarMessage.NO_INTERNET -> viewModel.isLcomminiclipcaring = false
-
                         WebLinkcomminiclipcarMessage.ORGANIC_OR_DEVELOPER,
                         WebLinkcomminiclipcarMessage.INCORRECT_URL -> naviecomminiclipcarResulToMenu()
                         else -> {}
@@ -127,7 +120,6 @@ class MainActivity : ComponentActivity() {
                 if (!isUrlCorrect) {
                     throw Exception(WebLinkcomminiclipcarMessage.INCORRECT_URL.name)
                 }
-                Log.d(TAG, "fetchData Success")
                 lifecycleScope.launch(Dispatchers.IO) {
                     buecomminiclipcarResuler.becomminiclipcarResuln()
                 }
@@ -141,7 +133,6 @@ class MainActivity : ComponentActivity() {
                             "ct_otiavgw".comminiclipcar() -> buecomminiclipcarResuler.AfPecomminiclipcarResuls().setecomminiclipcarResulnel(value.toString())
                         }
                     }
-                    Log.d(TAG, "afLiveDataCollect Success")
 
                     trySend(
                         webLcomminiclipcarall {
@@ -156,7 +147,7 @@ class MainActivity : ComponentActivity() {
                 }
                 awaitClose { cancel() }
             }
-        }.first()
+        }.last()
     }
 
 
