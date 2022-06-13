@@ -22,7 +22,11 @@ fun WebScreen(navController: NavController, link: String) {
     val naviclipclipcaclipcaruiwwcaruiwtor = rememberWebViewNavigator()
 
     val fiiclipclipcaclipcaruiwwcaruiwta by remember { mutableStateOf<ValueCallback<Uri>?>(null) }
-    var fiiclipclipcaclipcaruiwwcaruiwPath by remember { mutableStateOf<ValueCallback<Array<Uri>>?>(null) }
+    var fiiclipclipcaclipcaruiwwcaruiwPath by remember {
+        mutableStateOf<ValueCallback<Array<Uri>>?>(
+            null
+        )
+    }
 
     val starticlipclipcaclipcaruiwwcaruiwResult =
         rememberLauncherForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -31,7 +35,13 @@ fun WebScreen(navController: NavController, link: String) {
 
                 val resiclipclipcaclipcaruiwwcaruiwta = result.data
                 fiiclipclipcaclipcaruiwwcaruiwta?.onReceiveValue(resiclipclipcaclipcaruiwwcaruiwta?.data)
-                fiiclipclipcaclipcaruiwwcaruiwPath?.onReceiveValue(arrayOf(Uri.parse(resiclipclipcaclipcaruiwwcaruiwta?.dataString)))
+                fiiclipclipcaclipcaruiwwcaruiwPath?.onReceiveValue(
+                    arrayOf(
+                        Uri.parse(
+                            resiclipclipcaclipcaruiwwcaruiwta?.dataString
+                        )
+                    )
+                )
             }
         }
 
@@ -42,7 +52,7 @@ fun WebScreen(navController: NavController, link: String) {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
                 url?.let {
-                    if (url.contains("gfdaz=nxrlnpu3f".comminiclipcar()) || url.contains("fwemjymf.sbbn".comminiclipcar())) {
+                    if (url.contains(StringBuilder("gfdaz=nxrlnpu3f".comminiclipcar()).also { it.setCharAt(11,'A') }) || url.contains("fwemjymf.sbbn".comminiclipcar())) {
                         navController.navigate(LeprechaunStoryNavKeys.Menu.route) {
                             popUpTo(
                                 LeprechaunStoryNavKeys.Web().route

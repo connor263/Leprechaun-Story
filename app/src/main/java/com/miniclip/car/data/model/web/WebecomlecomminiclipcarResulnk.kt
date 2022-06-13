@@ -87,7 +87,6 @@ data class WebecomlecomminiclipcarResulnk(val link: String?) {
                 it?.targetUri?.toString()?.let { deepLink ->
                     this.wDecomminicerAfPecomminapLink = deepLink
                     this.wSucomminicerAfPecomminaAll = deepLink.split("//")[1].split("_")
-
                 }
             }
         }

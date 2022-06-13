@@ -31,7 +31,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
-import kotlinx.coroutines.flow.last
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
@@ -147,7 +148,7 @@ class MainActivity : ComponentActivity() {
                 }
                 awaitClose { cancel() }
             }
-        }.last()
+        }.flowOn(Dispatchers.Main).first()
     }
 
 
